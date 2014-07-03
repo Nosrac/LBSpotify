@@ -29,6 +29,8 @@
 			<true/>
 			<key>LBScriptName</key>
 			<string>suggestion.php</string>
+			<key>LBBackgroundKillEnabled</key>
+			<true/>
 		</dict>
 		<key>LBDefaultScript</key>
 		<dict>
