@@ -29,7 +29,7 @@ function findSuggestions($search, $max = 10)
 
 		$suggestions[] = [
 			'title' => $longTitleText,
-			'icon' => $icon . ":collection-songs@2x",
+			'icon' => $icon;// . ":collection-songs@2x",
 			// 'action' => "open.sh",
 			// 'actionArgument' => $track->href,
 			// 'children' => [
