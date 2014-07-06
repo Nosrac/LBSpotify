@@ -21,7 +21,7 @@ class SpotifyQuery
 			// 		'url' => $track->href,
 			// 	],
 			// 	$this->suggestionForArtist($track->artists[0]),
-			// 	$this->suggestionForAlbum($track->album)
+			// 	$this->suggestionForAlbum($track->album, $track->artists[0])
 			// ]
 		];
 	}
@@ -36,10 +36,10 @@ class SpotifyQuery
 				];
 	}
 
-	function suggestionForAlbum($album)
+	function suggestionForAlbum($album, $artist)
 	{
 		return [
-					'title' => $album->name,
+					'title' => $album->name . ' by ' . $artist->name,
 					'original_title' => $album->name,
 					'icon' => "at.obdev.LaunchBar:AlbumTemplate",
 					'url' => $album->href,
@@ -89,7 +89,7 @@ class SpotifyQuery
 		$suggestions = [ ];
 		foreach($result->tracks as $track)
 		{
-			$extras = [ $this->suggestionForArtist( $track->artists[0] ), $this->suggestionForAlbum( $track->album ) ];
+			$extras = [ $this->suggestionForArtist( $track->artists[0] ), $this->suggestionForAlbum( $track->album, $track->artists[0] ) ];
 			foreach( $extras as $result)
 			{
 				$adjustedTitle = preg_replace('/[^a-zA-Z0-9]+/', '', $result['title']);
@@ -153,7 +153,7 @@ class SpotifyQuery
 			], [
 				'title' => $track->album->name,
 				'url' => $track->album->href,
-				'value' => $this->suggestionForAlbum( $track->album ),
+				'value' => $this->suggestionForAlbum( $track->album, $track->artists[0] ),
 			],
 		];
 
