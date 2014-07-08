@@ -1,5 +1,6 @@
 function runWithString(string)
 {
-	LaunchBar.openURL(string);
+	string = string || "";
+	LaunchBar.openURL("spotify:search:" + encodeURIComponent(string) );
 }
 
