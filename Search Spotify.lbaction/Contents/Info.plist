@@ -11,13 +11,13 @@
 	<key>CFBundleName</key>
 	<string>Search Spotify</string>
 	<key>CFBundleVersion</key>
-	<string>1.6.1</string>
+	<string>2.0</string>
 	<key>LBDescription</key>
 	<dict>
 		<key>LBAuthor</key>
 		<string>Kyle Carson</string>
 		<key>LBSummary</key>
-		<string>Allows searching spotify with predictions</string>
+		<string>Search Spotify (with predictions!)</string>
 		<key>LBTwitter</key>
 		<string>@kyleacarson</string>
 	</dict>
