@@ -13,5 +13,5 @@ function runWithString(string)
 
 function run()
 {
-	LaunchBar.openURL("spotify://")
+	LaunchBar.openURL("spotify:")
 }
