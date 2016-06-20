@@ -232,9 +232,9 @@ class SpotifyQuery
 		$curl = new ParallelCurl(3);
 
 		foreach ([
-			"track" => "http://ws.spotify.com/search/1/track.json?q=". urlencode($this->search),
-			"artist" => "http://ws.spotify.com/search/1/artist.json?q=". urlencode($this->search),
-			"album" => "http://ws.spotify.com/search/1/album.json?q=". urlencode($this->search)
+			"track" => "https://api.spotify.com/v1/search?type=track&q=". urlencode($this->search),
+			"artist" => "https://api.spotify.com/v1/search?type=artist&q=". urlencode($this->search),
+			"album" => "https://api.spotify.com/v1/search?type=album&q=". urlencode($this->search)
 			] as $type => $url)
 		{
 			$curl->startRequest( $url, [ $this, 'processRequest' ], [ 'type' => $type, 'callback' => $callback ] );
@@ -277,19 +277,19 @@ class SpotifyQuery
 	private function returnSuggestions( $callback )
 	{
 		$suggestions = [ ];
-		foreach($this->trackResults->tracks as $i => $track)
+		foreach($this->trackResults->tracks->items as $i => $track)
 		{
 			if ($i > 2) break;
 
 			$suggestions[] = $this->suggestionForTrack( $track );
 		}
-		foreach($this->artistResults->artists as $i => $artist)
+		foreach($this->artistResults->artists->items as $i => $artist)
 		{
 			if ($i > 2) break;
 
 			$suggestions[] = $this->suggestionForArtist( $artist );
 		}
-		foreach($this->albumResults->albums as $i => $album)
+		foreach($this->albumResults->albums->items as $i => $album)
 		{
 			if ($i > 2) break;
 
